@@ -12,6 +12,8 @@ var eventMap = map[string]func() Event{
 	"TransitionListChanged":         func() Event { return &TransitionListChangedEvent{} },
 	"TransitionDurationChanged":     func() Event { return &TransitionDurationChangedEvent{} },
 	"TransitionBegin":               func() Event { return &TransitionBeginEvent{} },
+	"TransitionEnd":                 func() Event { return &TransitionEndEvent{} },
+	"TransitionVideoEnd":            func() Event { return &TransitionVideoEndEvent{} },
 	"ProfileChanged":                func() Event { return &ProfileChangedEvent{} },
 	"ProfileListChanged":            func() Event { return &ProfileListChangedEvent{} },
 	"StreamStarting":                func() Event { return &StreamStartingEvent{} },
@@ -73,6 +75,10 @@ func derefEvent(e Event) Event {
 	case *TransitionDurationChangedEvent:
 		return *e
 	case *TransitionBeginEvent:
+		return *e
+	case *TransitionEndEvent:
+		return *e
+	case *TransitionVideoEndEvent:
 		return *e
 	case *ProfileChangedEvent:
 		return *e
